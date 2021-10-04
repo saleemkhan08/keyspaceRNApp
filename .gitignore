@@ -37,8 +37,7 @@ local.properties
 .project
 .settings
 .classpath
-/android/
-
+*.hprof
 
 # Gradle
 /build/
@@ -90,3 +89,8 @@ buck-out/
 
 # Watchman
 .watchmanconfig
+android/app/debug.keystore
+android/gradlew.bat
+android/app/google-services.json
+android/gradle/wrapper/gradle-wrapper.jar
+android/app/_BUCK
