@@ -10,6 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import {NOTIFICATION_SCREEN} from 'src/utils/constants';
 import {colors, fontSize} from 'src/utils/styles';
+import RentCycle from './components/RentCycle';
 import Services from './components/Services';
 
 const HEADER_PADDING = 30;
@@ -86,6 +87,7 @@ function HomeScreen({navigation}: Props) {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
+      <RentCycle />
       <Services />
     </View>
   );
