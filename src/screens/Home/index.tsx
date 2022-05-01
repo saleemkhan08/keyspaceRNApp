@@ -6,14 +6,11 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
-  SectionList,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {CART_SCREEN, NOTIFICATION_SCREEN} from 'src/utils/constants';
+import {NOTIFICATION_SCREEN} from 'src/utils/constants';
 import {colors, fontSize} from 'src/utils/styles';
-import ProductCategories from './components/ProductCategories';
 import Services from './components/Services';
-import SubscriptionDetails from './components/SubscriptionDetails';
 
 const HEADER_PADDING = 30;
 const styles = StyleSheet.create({
@@ -30,7 +27,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   actionsContainer: {
-    width: 110,
+    width: 60,
     paddingEnd: HEADER_PADDING,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -62,23 +59,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const SECTIONS = [
-  {
-    data: [],
-    type: 'SUBSCRIPTION_DETAILS',
-  },
-  {
-    data: [],
-    title: 'Services',
-    type: 'SERVICES',
-  },
-  {
-    data: [],
-    title: 'Product Categories',
-    type: 'PRODUCT_CATEGORIES',
-  },
-];
-
 interface Props {
   navigation: {navigate: (path: string) => void};
 }
@@ -104,31 +84,9 @@ function HomeScreen({navigation}: Props) {
               color={colors.primary}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate(CART_SCREEN)}>
-            <Icon
-              name="cart-outline"
-              size={fontSize.lg}
-              color={colors.primary}
-            />
-          </TouchableOpacity>
         </View>
       </SafeAreaView>
-      <SectionList<any>
-        contentContainerStyle={styles.sectionContainerStyle}
-        stickySectionHeadersEnabled={false}
-        sections={SECTIONS}
-        renderSectionHeader={({section}) => (
-          <>
-            {section.title && (
-              <Text style={styles.sectionTitle}>{section.title}</Text>
-            )}
-            {section.type === 'SERVICES' && <Services />}
-            {section.type === 'SUBSCRIPTION_DETAILS' && <SubscriptionDetails />}
-            {section.type === 'PRODUCT_CATEGORIES' && <ProductCategories />}
-          </>
-        )}
-        renderItem={() => null}
-      />
+      <Services />
     </View>
   );
 }

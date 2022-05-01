@@ -45,10 +45,17 @@ const styles = StyleSheet.create({
     ...commonStyles.error,
     paddingVertical: 5,
   },
+  disabled: {
+    backgroundColor: colors.lightGrey,
+    borderRadius: 5,
+    borderColor: colors.secondary,
+    color: colors.darkGrey,
+  },
 });
 interface Props {
-  control: any;
+  control?: any;
   defaultValue?: number;
+  disabled?: boolean;
   errorMessage?: string;
   hintIcon?: string;
   hintText?: string;
@@ -63,6 +70,7 @@ function ControllerInput(props: Props) {
   const {
     control,
     defaultValue,
+    disabled,
     errorMessage,
     hintIcon,
     hintText,
@@ -81,7 +89,12 @@ function ControllerInput(props: Props) {
       render={({field: {onChange, onBlur, value, ref}}) => (
         <>
           <Text style={styles.label}>{label}</Text>
-          <View style={[styles.container, {borderColor: dynamicColor}]}>
+          <View
+            style={[
+              styles.container,
+              {borderColor: dynamicColor},
+              disabled ? styles.disabled : null,
+            ]}>
             {showHintOnLeft && (
               <View
                 style={[
@@ -102,9 +115,11 @@ function ControllerInput(props: Props) {
             )}
             <TextInput
               ref={ref}
+              editable={!disabled}
+              selectTextOnFocus={!disabled}
               autoCompleteType="off"
               keyboardType={type}
-              style={styles.input}
+              style={[styles.input, disabled ? styles.disabled : null]}
               onBlur={onBlur}
               onChangeText={onChange}
               value={value?.toString()}

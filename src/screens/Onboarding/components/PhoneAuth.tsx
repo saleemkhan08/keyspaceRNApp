@@ -31,7 +31,14 @@ function PhoneAuth(props: Props) {
     }
   };
 
-  const sendOtp = () => {};
+  const sendOtp = async () => {
+    try {
+      const confirm = await auth().signInWithPhoneNumber(`+91${phoneNumber}`);
+      setConfirmation(confirm);
+    } catch (error) {
+      console.log('SalConfirmationFailed : >>>>>>>>>>', error);
+    }
+  };
 
   const handleOTP = async (OTP: number) => {
     try {

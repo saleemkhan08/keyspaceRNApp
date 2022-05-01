@@ -3,7 +3,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import NotificationsScreen from 'screens/Notifications';
-import CartScreen from 'screens/Cart';
 import ChatScreen from 'screens/Chat';
 import ComplaintsScreen from 'screens/Complaints';
 import ProfileTab from 'screens/Profile';
@@ -11,7 +10,6 @@ import HomeTab from 'screens/Home';
 import SupportTab from 'screens/Support';
 
 import {
-  CART_SCREEN,
   CHAT_SCREEN,
   COMPLAINTS_SCREEN,
   HOME_SCREEN,
@@ -59,11 +57,6 @@ const UsersScreens = () => (
       name={NOTIFICATION_SCREEN}
       component={NotificationsScreen}
       options={{title: 'Notifications'}}
-    />
-    <HomeStack.Screen
-      name={CART_SCREEN}
-      component={CartScreen}
-      options={{title: 'Cart'}}
     />
     <HomeStack.Screen
       name={CHAT_SCREEN}
